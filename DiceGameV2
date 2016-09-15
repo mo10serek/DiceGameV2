@@ -1,0 +1,57 @@
+/*
+ * Created by: Michael Balcerzak
+ * Created on: 15-Sep-2016
+ * Created for: ICS4U
+ * Daily Assignment – 1-06
+ * This program lets the player to put a number and randomise the number between one and the user's number
+*/
+
+import java.util.Random;
+import java.util.Scanner;
+
+public class DiceGameV2 {
+
+	 public static int generateValue(double maxValue){
+		  // This function generates the value and print the value out
+		  Random rnd = new Random();
+		  
+		  int value;
+		  int maxValueInt = (int) maxValue;
+		  
+		  value = rnd.nextInt(maxValueInt) + 1;
+		  
+		  return value;
+		 }
+	 
+	public static void main(String[] args) {
+		 Scanner input = new Scanner(System.in);
+
+	     // make the range of the dice
+        System.out.println("Put a number so it can generate a random number between 1 and the number you put in: ");
+        double maxValue = input.nextDouble();
+        
+        //make the user to put the number in
+        System.out.println("Then put another number you think is on the dice");
+        int usersNumber = input.nextInt();
+        
+        //Variables
+	    int numberOfTries = 0;
+	    int diceNumber = generateValue(maxValue);
+        
+	     while (!(diceNumber == usersNumber))
+	     {
+	      System.out.print("You got it wrong.    ");
+
+	      numberOfTries = numberOfTries + 1;
+
+	      // Make the person enter
+	      System.out.println("Enter a number that you think is on the dice");
+	      usersNumber = input.nextInt();
+	     }
+	     
+	     //output
+	     System.out.print("You got it right. The dice's number is " + diceNumber + ". Number of guesses: " + numberOfTries);
+	}
+		
+
+}
